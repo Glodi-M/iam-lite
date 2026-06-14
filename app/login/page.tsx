@@ -1,12 +1,9 @@
-import Navbar from "@/components/Navbar";
 export default function LoginPage() {
     return (
         <>
-            <Navbar />
             <main className="flex min-h-screen items-center justify-center">
                 <div className="w-full max-w-md p-6 border border-gray-300 rounded-lg shadow-md">
                     <h1 className="text-3xl font-bold mb-6 text-center">Connexion</h1>
-
                     <form className="space-y-4">
                         <input
                             type="email"
@@ -17,7 +14,6 @@ export default function LoginPage() {
                             type="password"
                             placeholder="Mot de passe"
                             className="w-full border p-3 rounded"
-
                         />
                         <button
                             type="submit"
@@ -26,10 +22,7 @@ export default function LoginPage() {
                             Se connecter
                         </button>
                     </form>
-
                 </div>
-
-
             </main>
         </>
     );
