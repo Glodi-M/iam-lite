@@ -8,7 +8,7 @@ export default function Home() {
         <p className="mt-4 font-medium text-gray-600">
           Gestion des identités et des accès.
         </p>
-        <button className="mt-4 px-6 py-3 bg-black-500 text-black rounded hover:bg-blue-600">
+        <button className="mt-8 rounded bg-blue-500 px-6 py-3 text-white hover:bg-blue-600">
           Commencer
         </button>
 
