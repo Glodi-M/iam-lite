@@ -39,10 +39,9 @@ export async function POST(request: NextRequest) {
       expiresIn: "1h",
     });
 
-    return NextResponse.json(
+    const response = NextResponse.json(
       {
         message: "Connexion réussie",
-        token,
         user: {
           id: user._id,
           name: user.name,
@@ -51,6 +50,16 @@ export async function POST(request: NextRequest) {
       },
       { status: 200 },
     );
+
+    response.cookies.set("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 60 * 60, // 1 heure
+      path: "/",
+    });
+
+    return response;
   } catch (error) {
     return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
   }
