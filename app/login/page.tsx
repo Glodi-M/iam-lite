@@ -1,12 +1,13 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const router = useRouter();
-
+    const { setUser } = useAuth();
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -20,9 +21,9 @@ export default function LoginPage() {
         });
 
         const data = await response.json();
-
         if (response.ok) {
             console.log("Connexion réussie:", data.user);
+            setUser(data.user);
             router.push("/dashboard"); // Rediriger vers le tableau de bord après la connexion réussie
         } else {
             console.error("Erreur lors de la connexion:", data.error);
