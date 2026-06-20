@@ -35,9 +35,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET!, {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign(
+      { id: user._id, email: user.email, role: user.role },
+      process.env.JWT_SECRET!,
+      {
+        expiresIn: "1h",
+      },
+    );
 
     const response = NextResponse.json(
       {
@@ -46,6 +50,7 @@ export async function POST(request: NextRequest) {
           id: user._id,
           name: user.name,
           email: user.email,
+          role: user.role,
         },
       },
       { status: 200 },
