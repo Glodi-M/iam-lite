@@ -41,6 +41,12 @@ export default function Navbar() {
                             Dashboard
                         </Link>
 
+                        {user?.role === "ADMIN" && (
+                            <Link href="/admin">
+                                Admin
+                            </Link>
+                        )}
+
                         <button
                             onClick={handleLogout}
                             className="cursor-pointer"
@@ -57,6 +63,7 @@ export default function Navbar() {
                         <Link href="/register">
                             Inscription
                         </Link>
+
                     </>
                 )}
             </div>
